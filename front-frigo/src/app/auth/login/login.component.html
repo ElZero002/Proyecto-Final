@@ -1,0 +1,20 @@
+<div class="card" style="max-width: 400px; margin: 3rem auto;">
+    <h2 class="mb-3">Iniciar Sesión</h2>
+  
+    <p-messages [(value)]="mensajes" [closable]="true"></p-messages>
+  
+    <div class="p-fluid">
+      <div class="field">
+        <label for="usuario">Usuario</label>
+        <p-inputText id="usuario" [(ngModel)]="usuario" name="usuario" required autofocus />
+      </div>
+  
+      <div class="field">
+        <label for="clave">Contraseña</label>
+        <p-password id="clave" [(ngModel)]="clave" name="clave" toggleMask feedback="false" />
+      </div>
+  
+      <p-button label="Ingresar" icon="pi pi-sign-in" (onClick)="login()" styleClass="w-full mt-2"></p-button>
+    </div>
+  </div>
+  

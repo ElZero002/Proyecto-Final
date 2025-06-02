@@ -1,0 +1,12 @@
+<div class="card" style="max-width: 400px; margin: auto; margin-top: 4rem;">
+  <h2>Verificar código</h2>
+
+  <p-messages [(value)]="mensajes"></p-messages>
+
+  <div class="p-fluid">
+    <label for="codigo">Código recibido</label>
+    <p-inputText [(ngModel)]="codigo" name="codigo" required />
+
+    <p-button label="Verificar" icon="pi pi-check" class="mt-2" (onClick)="verificarCodigo()"></p-button>
+  </div>
+</div>

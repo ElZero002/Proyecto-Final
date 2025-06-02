@@ -1,0 +1,30 @@
+<div class="card" style="max-width: 450px; margin: 3rem auto;">
+    <h2 class="mb-3">Registro</h2>
+  
+    <p-messages [(value)]="mensajes" [closable]="true"></p-messages>
+  
+    <div class="p-fluid">
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <p-inputText id="nombre" [(ngModel)]="nombre" name="nombre" required />
+      </div>
+  
+      <div class="field">
+        <label for="correo">Correo</label>
+        <p-inputText id="correo" [(ngModel)]="correo" name="correo" required type="email" />
+      </div>
+  
+      <div class="field">
+        <label for="usuario">Usuario</label>
+        <p-inputText id="usuario" [(ngModel)]="usuario" name="usuario" required />
+      </div>
+  
+      <div class="field">
+        <label for="clave">Contraseña</label>
+        <p-password id="clave" [(ngModel)]="clave" name="clave" toggleMask />
+      </div>
+  
+      <p-button label="Registrarse" icon="pi pi-user-plus" (onClick)="registrar()" styleClass="w-full mt-2"></p-button>
+    </div>
+  </div>
+  
