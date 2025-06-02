@@ -1,12 +1,101 @@
-<div class="card" style="max-width: 400px; margin: auto; margin-top: 4rem;">
-  <h2>Verificar código</h2>
+<div class="form-wrapper">
+  <div class="form-box">
+    <img src="assets/logo-frigoservicios.png" class="logo" alt="Frigoservicios" />
+    <h2 class="title">🔍 Verificar Código</h2>
+    <p class="subtitle">Ingresa el código que recibiste por correo</p>
 
-  <p-messages [(value)]="mensajes"></p-messages>
+    <form (ngSubmit)="verificar()" #form="ngForm">
+      <label for="codigo">Código de verificación</label>
+      <input id="codigo" name="codigo" [(ngModel)]="codigo" required />
 
-  <div class="p-fluid">
-    <label for="codigo">Código recibido</label>
-    <p-inputText [(ngModel)]="codigo" name="codigo" required />
-
-    <p-button label="Verificar" icon="pi pi-check" class="mt-2" (onClick)="verificarCodigo()"></p-button>
+      <button type="submit" class="btn-green" [disabled]="!form.valid">Verificar</button>
+      <a routerLink="/forgot-password" class="btn-blue">¿No recibiste el código? Volver</a>
+    </form>
   </div>
 </div>
+
+<style>
+  .form-wrapper {
+    background: linear-gradient(to bottom, #ffffff, #e0f0ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-box {
+    background: white;
+    border: 3px solid #1976d2;
+    border-radius: 25px;
+    padding: 2rem;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .logo {
+    width: 70%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    color: #1976d2;
+    font-size: 1.6rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    color: #ff6f00;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  label {
+    font-weight: bold;
+    color: #1976d2;
+    display: block;
+    margin: 0.75rem 0 0.25rem;
+    text-align: left;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .btn-green {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .btn-green:hover {
+    background-color: #00b34a;
+  }
+
+  .btn-blue {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    background: #1976d2;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .btn-blue:hover {
+    background-color: #1565c0;
+  }
+</style>

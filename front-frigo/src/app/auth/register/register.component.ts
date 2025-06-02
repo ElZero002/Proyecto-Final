@@ -1,46 +1,25 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../servicios/auth.service';
-
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { ButtonModule } from 'primeng/button';
-import { MessagesModule } from 'primeng/messages';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-register',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    InputTextModule,
-    PasswordModule,
-    ButtonModule,
-    MessagesModule
-  ],
+  selector: 'app-register',
+  imports: [CommonModule, FormsModule],
   templateUrl: './register.component.html'
 })
 export class RegisterComponent {
-  nombre: string = '';
-  correo: string = '';
-  usuario: string = '';
-  clave: string = '';
-  mensajes: any[] = []; // ✅ Reemplaza el tipo Message[]
+  cedula = '';
+  telefono = '';
+  usuario = '';
+  correo = '';
+  clave = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router) {}
 
   registrar() {
-    if (this.usuario && this.clave && this.correo && this.nombre) {
-      this.mensajes = [
-        { severity: 'success', summary: 'Registro exitoso', detail: 'Usuario creado correctamente' }
-      ];
-      setTimeout(() => this.router.navigate(['/login']), 1500);
-    } else {
-      this.mensajes = [
-        { severity: 'error', summary: 'Error', detail: 'Todos los campos son obligatorios' }
-      ];
-    }
+    alert('Usuario registrado');
+    this.router.navigate(['/login']);
   }
 }

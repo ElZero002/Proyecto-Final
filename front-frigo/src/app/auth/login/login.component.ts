@@ -1,41 +1,25 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../servicios/auth.service';
-
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { ButtonModule } from 'primeng/button';
-import { MessagesModule } from 'primeng/messages';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    InputTextModule,
-    PasswordModule,
-    ButtonModule,
-    MessagesModule
-  ],
+  selector: 'app-login',
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
   usuario: string = '';
   clave: string = '';
-  mensajes: any[] = []; // ✅ Ya no se usa Message
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router) {}
 
   login() {
-    if (this.authService.login(this.usuario, this.clave)) {
-      this.router.navigate(['/dashboard']);
+    if (this.usuario === 'admin@correo.com' && this.clave === '123456') {
+      this.router.navigate(['/admin/usuarios']);
     } else {
-      this.mensajes = [
-        { severity: 'error', summary: 'Error', detail: 'Credenciales inválidas' }
-      ];
+      alert('Credenciales inválidas');
     }
   }
 }
