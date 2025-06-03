@@ -7,8 +7,8 @@ import { MenuItem } from 'primeng/api';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'app-layout-sakai',
   standalone: true,
+  selector: 'app-layout-sakai',
   imports: [
     CommonModule,
     RouterModule,

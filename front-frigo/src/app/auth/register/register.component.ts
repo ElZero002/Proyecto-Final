@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // si te da error, cambia a '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-register',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './register.component.html'
+  standalone: true,
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent {
   cedula = '';
@@ -19,7 +20,19 @@ export class RegisterComponent {
   constructor(private router: Router) {}
 
   registrar() {
-    alert('Usuario registrado');
+    console.log('Usuario registrado:', {
+      cedula: this.cedula,
+      telefono: this.telefono,
+      usuario: this.usuario,
+      correo: this.correo,
+      clave: this.clave
+    });
+    alert('Registro exitoso');
+    this.router.navigate(['/login']); // opcional, puedes mantenerlo o no después del registro
+  }
+
+  irAlLogin() {
     this.router.navigate(['/login']);
   }
 }
+

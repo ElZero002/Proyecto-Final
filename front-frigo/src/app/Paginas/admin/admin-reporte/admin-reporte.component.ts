@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-admin-reporte',
   templateUrl: './admin-reporte.component.html',
-  standalone: true
+  styleUrls: ['./admin-reporte.component.scss']
 })
 export class AdminReporteComponent {}
+

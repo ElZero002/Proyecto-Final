@@ -1,16 +1,17 @@
 <div class="form-wrapper">
   <div class="form-box">
-    <img src="assets/logo-frigoservicios.png" class="logo" alt="Frigoservicios" />
-    <h2 class="title">🔍 Verificar Código</h2>
-    <p class="subtitle">Ingresa el código que recibiste por correo</p>
+    <img src="assets/logo-frigoservicios.png" class="logo" />
+    <h2 class="title">🔒 Verifica tu código</h2>
+    <p class="subtitle">Ingresa el código que enviamos a tu correo</p>
 
     <form (ngSubmit)="verificar()" #form="ngForm">
-      <label for="codigo">Código de verificación</label>
+      <label for="codigo">Código</label>
       <input id="codigo" name="codigo" [(ngModel)]="codigo" required />
 
       <button type="submit" class="btn-green" [disabled]="!form.valid">Verificar</button>
-      <a routerLink="/forgot-password" class="btn-blue">¿No recibiste el código? Volver</a>
     </form>
+
+    <button (click)="volver()" class="btn-blue">¿No te llegó el código? Volver al login</button>
   </div>
 </div>
 
@@ -93,6 +94,7 @@
     border-radius: 10px;
     text-decoration: none;
     font-weight: bold;
+    width: 100%;
   }
 
   .btn-blue:hover {

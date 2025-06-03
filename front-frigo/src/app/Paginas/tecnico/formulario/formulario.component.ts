@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  standalone: true
+  styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent {}
+
+

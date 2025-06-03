@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tickets',
-  imports: [],
   templateUrl: './tickets.component.html',
-  styleUrl: './tickets.component.scss'
+  styleUrls: ['./tickets.component.scss'] // 👈 corregido aquí
 })
-export class TicketsComponent {
-
-}
+export class TicketsComponent { }

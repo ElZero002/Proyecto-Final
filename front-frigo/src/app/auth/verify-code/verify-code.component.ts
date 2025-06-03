@@ -1,27 +1,34 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-verify-code',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './verify-code.component.html'
+  standalone: true,
+  templateUrl: './verify-code.component.html',
+  styleUrls: ['./verify-code.component.scss'],
+  imports: [CommonModule, FormsModule]
 })
 export class VerifyCodeComponent {
-  codigo: string = '';
+  codigo = '';
+  error = '';
 
   constructor(private router: Router) {}
 
   verificar() {
-    if (this.codigo.trim() === '') {
-      alert('Por favor ingresa un código');
-      return;
-    }
+    const codigoGuardado = localStorage.getItem('codigo_verificacion');
 
-    // Aquí podrías agregar lógica real de verificación
-    alert('Código verificado correctamente');
-    this.router.navigate(['/reset-password']);
+    if (this.codigo === codigoGuardado) {
+      alert('Código verificado con éxito');
+      this.router.navigate(['/reset-password']);
+    } else {
+      this.error = 'Código incorrecto. Verifica e intenta de nuevo.';
+    }
+  }
+
+  volver() {
+    this.router.navigate(['/login']);
   }
 }
+
