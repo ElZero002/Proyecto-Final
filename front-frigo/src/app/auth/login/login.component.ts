@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +17,28 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   login() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      this.router.navigate(['/admin']);
-    } else if (this.usuario === 'cliente' && this.clave === 'cliente') {
-      this.router.navigate(['/cliente']);
-    } else if (this.usuario === 'tecnico' && this.clave === 'tecnico') {
-      this.router.navigate(['/tecnico']);
+    let rol = '';
+
+    if (this.usuario === 'jossymena06@gmail.com' && this.clave === 'admin123') {
+      rol = 'admin';
+    } else if (this.usuario.endsWith('@gmail.com')) {
+      if (this.usuario.includes('cliente')) {
+        rol = 'cliente';
+      } else if (this.usuario.includes('tecnico')) {
+        rol = 'tecnico';
+      }
     } else {
       alert('Credenciales incorrectas');
+      return;
     }
+
+    const payload = { email: this.usuario, rol: rol };
+    const token = btoa(JSON.stringify(payload)); // Simulación base64
+    localStorage.setItem('auth_token', token);
+
+    if (rol === 'admin') this.router.navigate(['/admin']);
+    else if (rol === 'cliente') this.router.navigate(['/cliente']);
+    else this.router.navigate(['/tecnico']);
   }
 
   irARegistro() {

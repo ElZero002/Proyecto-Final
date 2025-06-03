@@ -1,35 +1,20 @@
 <div class="login-container">
-  <h2>Iniciar sesión</h2>
-  <form (ngSubmit)="login()" #loginForm="ngForm">
-    <div class="form-group">
-      <label for="usuario">Usuario</label>
-      <input
-        type="text"
-        id="usuario"
-        name="usuario"
-        [(ngModel)]="usuario"
-        required
-        placeholder="Ingrese su usuario"
-      />
-    </div>
+  <div class="form-box">
+    <h2>Iniciar sesión</h2>
 
-    <div class="form-group">
+    <form (ngSubmit)="login()">
+      <label for="usuario">Correo</label>
+      <input type="text" id="usuario" [(ngModel)]="usuario" name="usuario" required />
+
       <label for="clave">Contraseña</label>
-      <input
-        type="password"
-        id="clave"
-        name="clave"
-        [(ngModel)]="clave"
-        required
-        placeholder="Ingrese su contraseña"
-      />
+      <input type="password" id="clave" [(ngModel)]="clave" name="clave" required />
+
+      <button type="submit">Ingresar</button>
+    </form>
+
+    <div class="extra-links">
+      <a (click)="irARegistro()">Registrarse</a> |
+      <a (click)="irAOlvido()">¿Olvidaste tu contraseña?</a>
     </div>
-
-    <button type="submit">Entrar</button>
-  </form>
-
-  <div class="auth-links">
-    <p><a (click)="irARegistro()">¿No tienes cuenta? Regístrate</a></p>
-    <p><a (click)="irAOlvido()">¿Olvidaste tu contraseña?</a></p>
   </div>
 </div>

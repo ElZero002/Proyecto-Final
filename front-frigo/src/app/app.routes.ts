@@ -1,7 +1,14 @@
 import { Routes } from '@angular/router';
-import { LayoutSakaiComponent } from './layout/layout-sakai/layout-sakai.component';
 
 export const routes: Routes = [
+  // Rutas públicas SIN layout
+  {
+    path: '',
+    loadChildren: () =>
+      import('./auth/auth-routing.module').then(m => m.routes),
+  },
+
+  // Rutas privadas CON layout
   {
     path: '',
     loadComponent: () =>
@@ -24,11 +31,8 @@ export const routes: Routes = [
       },
     ],
   },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./auth/auth-routing.module').then(m => m.routes),
-  },
+
+  // Redirección por defecto
   {
     path: '**',
     redirectTo: 'login',
