@@ -1,27 +1,22 @@
-import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { LayoutSakaiComponent } from '../../layout/layout-sakai/layout-sakai.component';
-import { ListaMaterialesComponent } from './lista-materiales/lista-materiales.component';
+import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: LayoutSakaiComponent,
-    children: [
-      {
-        path: 'formulario',
-        loadComponent: () => import('./formulario/formulario.component').then(m => m.FormularioComponent)
-      },
-      {
-        path: 'materiales',
-        loadComponent: () => import('./lista-materiales/lista-materiales.component').then(m => m.ListaMaterialesComponent)
-      },
-      {
-        path: 'tickets',
-        loadComponent: () => import('./ticket-tecnico/ticket-tecnico.component').then(m => m.TicketTecnicoComponent)
-      }
-    ]
-  }
+{
+  path: '',
+  redirectTo: 'tickets',
+  pathMatch: 'full'
+},
+{
+  path: 'tickets',
+  loadComponent: () =>
+    import('./ticket-tecnico/ticket-tecnico.component').then(m => m.TicketTecnicoComponent)
+},
+{
+  path: 'materiales',
+  loadComponent: () =>
+    import('./lista-materiales/lista-materiales.component').then(m => m.ListaMaterialesComponent)
+}
 ];
 
 @NgModule({

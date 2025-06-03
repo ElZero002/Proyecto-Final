@@ -1,17 +1,72 @@
 .layout-wrapper {
   display: flex;
   height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .sidebar {
     width: 240px;
-    background: #fff;
-    border-right: 1px solid #ddd;
-    padding: 1rem;
+    background: #f8f9fc;
+    border-right: 1px solid #cbd5e0;
+    padding: 1.5rem 1rem;
+
     .logo {
+      font-size: 1.5rem;
       font-weight: bold;
       color: #007bff;
-      font-size: 20px;
-      margin-bottom: 1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
+    }
+
+    // Estilos específicos de PrimeNG para p-panelMenu
+    ::ng-deep .p-panelmenu {
+      border: none;
+      background: transparent;
+
+      .p-panelmenu-header {
+        background: transparent;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #007bff;
+        padding: 0.75rem 1rem;
+      }
+
+      .p-panelmenu-content {
+        background: transparent;
+        border: none;
+      }
+
+      .p-menuitem {
+        border: none;
+      }
+
+      .p-menuitem-link {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.35rem;
+        border-radius: 0.6rem;
+        background-color: #f0f4ff;
+        color: #1f2937;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: #d6e4ff;
+          color: #004a99;
+        }
+
+        .pi {
+          margin-right: 0.75rem;
+          font-size: 1.2rem;
+          color: #007bff;
+        }
+      }
+
+      .p-panelmenu-icon {
+        display: none;
+      }
     }
   }
 
@@ -24,16 +79,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 1rem;
+      padding: 0.75rem 1.5rem;
       background: linear-gradient(to right, #004a99, #ff6a00);
       color: white;
+      font-weight: 500;
+      font-size: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .content {
-      padding: 1.5rem;
-      background: #eef3fa;
       flex-grow: 1;
+      padding: 2rem;
+      background: #eef3fa;
       overflow-y: auto;
+      border-top: 1px solid #ddd;
     }
   }
 }

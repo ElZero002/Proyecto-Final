@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../servicios/auth.service';
 
 @Component({
   selector: 'app-layout-sakai',
@@ -21,19 +22,13 @@ export class LayoutSakaiComponent implements OnInit {
   items: MenuItem[] = [];
   rol: string = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    const token = localStorage.getItem('auth_token');
-    if (token) {
-      try {
-        const decoded: any = JSON.parse(atob(token));
-        this.rol = decoded.rol;
-      } catch (e) {
-        console.error('Token inválido');
-      }
-    }
-
+    this.rol = this.authService.obtenerRol();
     this.setMenuByRol();
   }
 
@@ -48,23 +43,22 @@ export class LayoutSakaiComponent implements OnInit {
         { label: 'Materiales', icon: 'pi pi-box', routerLink: ['/admin/materiales'] },
         { label: 'Reportes', icon: 'pi pi-chart-line', routerLink: ['/admin/reportes'] }
       ];
-    } else if (this.rol === 'cliente') {
-      this.items = [
-        { label: 'Inicio', icon: 'pi pi-home', routerLink: ['/cliente'] },
-        { label: 'Pedido', icon: 'pi pi-shopping-cart', routerLink: ['/cliente/pedidos'] },
-        { label: 'Historial', icon: 'pi pi-history', routerLink: ['/cliente/historial'] }
-      ];
     } else if (this.rol === 'tecnico') {
       this.items = [
         { label: 'Inicio', icon: 'pi pi-home', routerLink: ['/tecnico'] },
-        { label: 'Reportes', icon: 'pi pi-chart-line', routerLink: ['/tecnico/reportes'] },
+        { label: 'Tickets', icon: 'pi pi-ticket', routerLink: ['/tecnico/tickets'] },
         { label: 'Materiales', icon: 'pi pi-box', routerLink: ['/tecnico/materiales'] }
+      ];
+    } else if (this.rol === 'cliente') {
+      this.items = [
+        { label: 'Inicio', icon: 'pi pi-home', routerLink: ['/cliente'] },
+        { label: 'Pedido', icon: 'pi pi-shopping-cart', routerLink: ['/cliente/pedidos'] }
       ];
     }
   }
 
   cerrarSesion() {
-    localStorage.removeItem('auth_token');
+    this.authService.eliminarToken();
     this.router.navigate(['/login']);
   }
 }

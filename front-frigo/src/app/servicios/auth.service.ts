@@ -1,32 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly TOKEN_KEY = 'auth_token';
+  private tokenKey = 'auth_token';
 
-  constructor(private router: Router) {}
+  guardarToken(token: string) {
+    localStorage.setItem(this.tokenKey, token);
+  }
 
-  login(usuario: string, clave: string): boolean {
-    if (usuario === 'admin' && clave === 'admin') {
-      localStorage.setItem(this.TOKEN_KEY, 'token_de_ejemplo');
-      return true;
+  obtenerToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  eliminarToken() {
+    localStorage.removeItem(this.tokenKey);
+  }
+
+  estaAutenticado(): boolean {
+    return !!this.obtenerToken();
+  }
+
+  obtenerUsuario(): any {
+    const token = this.obtenerToken();
+    if (!token) return null;
+    try {
+      return JSON.parse(atob(token));
+    } catch (e) {
+      return null;
     }
-    return false;
   }
 
-  logout(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-    this.router.navigate(['/login']);
+  obtenerRol(): string {
+    const user = this.obtenerUsuario();
+    return user?.rol ?? '';
   }
 
-  isAuthenticated(): boolean {
-    return localStorage.getItem(this.TOKEN_KEY) !== null;
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+  obtenerCorreo(): string {
+    const user = this.obtenerUsuario();
+    return user?.correo ?? '';
   }
 }

@@ -1,14 +1,10 @@
-import { Routes } from '@angular/router';
+import { Routes} from '@angular/router';
 
 export const routes: Routes = [
-  // Rutas públicas SIN layout
   {
     path: '',
-    loadChildren: () =>
-      import('./auth/auth-routing.module').then(m => m.routes),
+    loadChildren: () => import('./auth/auth-routing.module').then(m => m.routes),
   },
-
-  // Rutas privadas CON layout
   {
     path: '',
     loadComponent: () =>
@@ -28,13 +24,8 @@ export const routes: Routes = [
         path: 'tecnico',
         loadChildren: () =>
           import('./Paginas/tecnico/tecnico-routing.module').then(m => m.routes),
-      },
-    ],
+      }
+    ]
   },
-
-  // Redirección por defecto
-  {
-    path: '**',
-    redirectTo: 'login',
-  },
+  { path: '**', redirectTo: 'login' }
 ];
