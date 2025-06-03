@@ -1,1 +1,33 @@
-<p>lista-materiales works!</p>
+<div class="materiales-container">
+  <div class="card">
+    <h2>📦 Gestión de Materiales</h2>
+
+    <!-- Buscador -->
+    <input
+      type="text"
+      [(ngModel)]="filtro"
+      placeholder="Buscar material..."
+      class="buscador"
+    />
+
+    <!-- Tabla filtrada -->
+    <table class="material-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mat of materialesFiltrados">
+          <td>{{ mat.id }}</td>
+          <td>{{ mat.nombre }}</td>
+          <td>{{ mat.descripcion }}</td>
+          <td>{{ mat.stock }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

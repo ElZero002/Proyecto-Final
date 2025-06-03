@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router'; 
 
 export const routes: Routes = [
+{
+    path: '',
+    loadComponent: () =>
+      import('./tecnico-home/tecnico-home.component').then(m => m.TecnicoHomeComponent)
+},
 {
   path: '',
   redirectTo: 'tickets',
   pathMatch: 'full'
+},
+{
+   path: 'reportes',
+  loadComponent: () =>
+    import('./reportes/reportes.component').then(m => m.ReportesComponent)
 },
 {
   path: 'tickets',

@@ -1,1 +1,53 @@
-<p>lista-tecnico works!</p>
+<div class="tecnicos-container">
+  <div class="header">
+    <h2>Técnicos</h2>
+    <p>Editar, guardar y eliminar</p>
+  </div>
+
+  <table class="tecnicos-table">
+    <thead>
+      <tr>
+        <th>Cédula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tecnico of tecnicos">
+        <td>{{ tecnico.cedula }}</td>
+
+        <td>
+          <span class="material-icons icon">person</span>
+          <input *ngIf="tecnico.editando" [(ngModel)]="tecnico.nombre" />
+          <span *ngIf="!tecnico.editando">{{ tecnico.nombre }}</span>
+        </td>
+
+        <td>
+          <input *ngIf="tecnico.editando" [(ngModel)]="tecnico.apellido" />
+          <span *ngIf="!tecnico.editando">{{ tecnico.apellido }}</span>
+        </td>
+
+        <td>
+          <input *ngIf="tecnico.editando" [(ngModel)]="tecnico.correo" />
+          <span *ngIf="!tecnico.editando">{{ tecnico.correo }}</span>
+        </td>
+
+        <td class="acciones">
+          <button *ngIf="!tecnico.editando" (click)="editar(tecnico)" class="btn edit">
+            <span class="material-icons">edit</span> Editar
+          </button>
+
+          <button *ngIf="tecnico.editando" (click)="guardar(tecnico)" class="btn save">
+            <span class="material-icons">save</span> Guardar
+          </button>
+
+          <button (click)="eliminar(tecnico)" class="btn delete">
+            <span class="material-icons">delete</span> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

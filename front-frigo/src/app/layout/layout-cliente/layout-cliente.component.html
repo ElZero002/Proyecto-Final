@@ -1,0 +1,23 @@
+<div class="layout-wrapper">
+  <aside class="sidebar">
+    <div class="logo">FRIGOSERVICIOS</div>
+    <p-panelMenu [model]="items" styleClass="menu-panel"></p-panelMenu>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <span class="user-info">Cliente</span>
+      <button
+        pButton
+        icon="pi pi-sign-out"
+        label="Cerrar sesión"
+        class="p-button-sm p-button-danger"
+        (click)="cerrarSesion()"
+      ></button>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutSakaiComponent } from './layout-sakai.component';
+import { TecnicoHomeComponent } from './tecnico-home.component';
 
-describe('LayoutSakaiComponent', () => {
-  let component: LayoutSakaiComponent;
-  let fixture: ComponentFixture<LayoutSakaiComponent>;
+describe('TecnicoHomeComponent', () => {
+  let component: TecnicoHomeComponent;
+  let fixture: ComponentFixture<TecnicoHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LayoutSakaiComponent]
+      imports: [TecnicoHomeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LayoutSakaiComponent);
+    fixture = TestBed.createComponent(TecnicoHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

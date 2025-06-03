@@ -1,1 +1,41 @@
-<p>ticket-tecnico works!</p>
+<div class="ticket-container">
+  <div class="ticket-card">
+    <h2>🎫 Ticket para el Técnico</h2>
+
+    <div class="row">
+      <div class="field">
+        <label>Datos Ticket</label>
+        <input type="text" [value]="ticketId" readonly />
+      </div>
+      <div class="field">
+        <label>Fecha</label>
+        <input type="text" [value]="fecha" readonly />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Hora de visita</label>
+        <input type="text" [value]="hora" readonly />
+      </div>
+      <div class="field">
+        <label>Estado</label>
+        <input type="text" [value]="estado" readonly class="estado" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Técnico</label>
+      <input type="text" [value]="tecnico" readonly />
+    </div>
+
+    <div class="field">
+      <label>Descripción del problema del Cliente</label>
+      <textarea [(ngModel)]="descripcionProblema" placeholder="Descripción problema..."></textarea>
+    </div>
+
+    <div class="button-container">
+      <button (click)="aceptarTicket()">Aceptar</button>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,29 @@
-<p>admin-pedido works!</p>
+<div class="pedido-container">
+  <h2>Pedidos</h2>
+
+  <div
+    class="pedido-item"
+    *ngFor="let pedido of pedidos"
+    [class.expanded]="pedido.abierto"
+  >
+    <div class="pedido-header" (click)="toggle(pedido)">
+      <div class="pedido-id">
+        <span class="label">ID</span>
+        <span class="value">{{ pedido.id | number: '2.0' }}</span>
+      </div>
+      <span class="icon">{{ pedido.abierto ? '▲' : '▼' }}</span>
+    </div>
+
+    <div class="pedido-detalle" *ngIf="pedido.abierto">
+      <div class="campo">
+        <label class="green">Empresa</label>
+        <input type="text" [value]="pedido.empresa" readonly />
+      </div>
+
+      <div class="campo">
+        <label class="green">Detalle (viene de cliente)</label>
+        <textarea readonly>{{ pedido.detalle }}</textarea>
+      </div>
+    </div>
+  </div>
+</div>

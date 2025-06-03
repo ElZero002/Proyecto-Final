@@ -1,0 +1,34 @@
+.tecnico-welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+
+  .content {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00796b;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+  }
+}

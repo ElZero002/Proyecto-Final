@@ -1,1 +1,32 @@
-<p>lista-cliente works!</p>
+<div class="clientes-container">
+  <div class="header">
+    <h2>Clientes</h2>
+  </div>
+
+  <table class="clientes-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td [style.color]="cliente.nombre === 'Jose' ? 'magenta' : 'inherit'">
+          {{ cliente.nombre }}
+        </td>
+        <td>{{ cliente.correo }}</td>
+        <td>{{ cliente.telefono }}</td>
+        <td class="acciones">
+          <button (click)="eliminar(cliente)">
+            <span class="material-icons">delete</span>
+          </button>
+          <button (click)="editar(cliente)">
+            <span class="material-icons">edit</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

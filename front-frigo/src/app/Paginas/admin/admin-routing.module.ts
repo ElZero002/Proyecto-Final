@@ -1,9 +1,13 @@
-// admin-routing.module.ts
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-export const routes: Routes = [
+
+const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./admin-home/admin-home.component').then(m => m.AdminHomeComponent)
+  },
   {
     path: 'usuarios',
     loadComponent: () =>

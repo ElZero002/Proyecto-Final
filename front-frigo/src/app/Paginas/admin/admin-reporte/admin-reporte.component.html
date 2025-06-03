@@ -1,1 +1,28 @@
-<p>admin-reporte works!</p>
+<div class="reporte-container">
+  <h2>Reportes</h2>
+
+  <div class="busqueda">
+    <input
+      type="text"
+      placeholder="Buscar"
+      [(ngModel)]="filtro"
+    />
+    <i class="pi pi-search"></i>
+  </div>
+
+  <div class="tabla">
+    <div class="fila encabezado">
+      <span>id</span>
+      <span>Reporte</span>
+      <span>PDF</span>
+    </div>
+
+    <div class="fila" *ngFor="let reporte of reportesFiltrados">
+      <span class="id">{{ reporte.id }}</span>
+      <span class="nombre">{{ reporte.nombre }}</span>
+      <span class="accion">
+        <button (click)="generarPDF(reporte)">📄</button>
+      </span>
+    </div>
+  </div>
+</div>

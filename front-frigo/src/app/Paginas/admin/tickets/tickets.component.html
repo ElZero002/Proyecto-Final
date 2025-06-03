@@ -1,1 +1,54 @@
-<p>tickets works!</p>
+<div class="ticket-container">
+  <h2>Tickets</h2>
+
+  <div class="button-group">
+    <button class="action-button">Editar</button>
+    <button class="action-button">Crear</button>
+  </div>
+
+  <hr />
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label>ID</label>
+      <div class="value-badge">01</div>
+    </div>
+
+    <div class="form-field">
+      <label>Fecha de la Visista</label>
+      <input type="text" value="24/06/2024" disabled />
+    </div>
+
+    <div class="form-field">
+      <label>Hora de la Visissta</label>
+      <input type="text" value="00:11:05 am" disabled />
+    </div>
+
+    <div class="form-field">
+      <label>Técnico</label>
+      <select>
+        <option>Select</option>
+        <option>Técnico 1</option>
+        <option>Técnico 2</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label>Estado</label>
+      <select>
+        <option>Alta urgencia</option>
+        <option>Media</option>
+        <option>Baja</option>
+      </select>
+    </div>
+
+    <div class="form-field full-width">
+      <label class="detalle-label">Detalle (viene de cliente)</label>
+      <textarea disabled>El detalle viene del cliente</textarea>
+    </div>
+  </div>
+
+  <div class="guardar-btn-container">
+    <button class="guardar-btn">Guardar</button>
+  </div>
+</div>
